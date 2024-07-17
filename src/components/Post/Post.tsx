@@ -9,19 +9,18 @@ interface Author {
     name: string;
     role: string;
     avatarUrl: string;
-}
-
-interface Content {
+  }
+  
+  interface Content {
     type: 'paragraph' | 'link';
-    content: string,
-}
-
-interface PostProps {
+    content: string;
+  }
+  
+  interface PostProps {
     author: Author;
     publishedAt: Date;
-    content: Content[]
-
-}
+    content: Content[];
+  }
 
 export function Post({ author, publishedAt, content }: PostProps) {
     const [comments, setComments] = useState([
@@ -85,6 +84,8 @@ export function Post({ author, publishedAt, content }: PostProps) {
                     } else if (line.type === "link") {
                         return <p key={line.content}><a href='#'>{line.content}</a></p>
                     }
+
+                    return null
                 })}
             </div>
 
