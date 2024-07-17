@@ -1,9 +1,14 @@
-import { Post } from './components/Post/Post'
-import { Header }  from './components/Header/Header'
-import { Sidebar } from './components/Sidebar/Sidebar'
+import { Post } from './components/Post/Post';
+import { Header } from './components/Header/Header';
+import { Sidebar } from './components/Sidebar/Sidebar';
 
-import './global.css'
-import styles from './App.module.css'
+import './global.css';
+import styles from './App.module.css';
+
+interface Content {
+  type: "link" | "paragraph";
+  content: string;
+}
 
 const posts = [
   {
@@ -14,13 +19,12 @@ const posts = [
       role: 'Dev Senior'
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋'},
-      { type: 'paragraph', content: '      Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
-      { type: 'link', content: '👉 jane.design/doctorcare'}
-    ],
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: '      Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: '👉 jane.design/doctorcare' }
+    ] as Content[],
     publishedAt: new Date("2024-07-17 23:21:00")
   },
-
   {
     id: 2,
     author: {
@@ -29,13 +33,12 @@ const posts = [
       role: 'Dev Junior'
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋'},
-      { type: 'paragraph', content: '      Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
-      { type: 'link', content: '👉 jane.design/doctorcare'}
-    ],
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: '      Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: '👉 jane.design/doctorcare' }
+    ] as Content[],
     publishedAt: new Date("2024-07-16 23:22:00")
   },
-
   {
     id: 3,
     author: {
@@ -44,36 +47,32 @@ const posts = [
       role: 'Dev Pleno'
     },
     content: [
-      { type: 'paragraph', content: 'Fala galeraa 👋'},
-      { type: 'paragraph', content: '      Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀'},
-      { type: 'link', content: '👉 jane.design/doctorcare'}
-    ],
+      { type: 'paragraph', content: 'Fala galeraa 👋' },
+      { type: 'paragraph', content: '      Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: '👉 jane.design/doctorcare' }
+    ] as Content[],
     publishedAt: new Date("2024-07-15 23:23:00")
   },
-]
+];
 
 export function App() {
-
   return (
     <div>
       <Header />
 
       <div className={styles.wrapper}>
-      <Sidebar />
+        <Sidebar />
         <main>
-          {posts.map(post => {
-            return(
-              <Post 
-                key={post.id}
-                author={post.author}
-                //@ts-ignore
-                content={post.content}
-                publishedAt={post.publishedAt}
-              />
-            )
-          })}
+          {posts.map(post => (
+            <Post
+              key={post.id}
+              author={post.author}
+              content={post.content}
+              publishedAt={post.publishedAt}
+            />
+          ))}
         </main>
       </div>
     </div>
-  )
+  );
 }

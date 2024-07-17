@@ -10,9 +10,8 @@ interface Author {
     role: string;
     avatarUrl: string;
   }
-  
   interface Content {
-    type: 'paragraph' | 'link';
+    type: "link" | "paragraph";
     content: string;
   }
   
